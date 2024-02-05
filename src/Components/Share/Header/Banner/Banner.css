@@ -1,0 +1,29 @@
+.bg{ 
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)), url("../../../../img/pexels-chan-walrus-958545.jpg"); 
+    background-repeat: no-repeat;
+    color: white;
+    
+}
+.bg h1{
+    font-size: 70px;
+    font-weight: bolder;
+}
+.bg h2{
+    font-weight: bolder;
+    font-size: 70px;
+    margin-top: 30px;
+    
+
+}
+.t-style{
+    color:rgb(50, 110, 50);
+    font-weight:bolder;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Rubik Glitch Pop', system-ui;
+    font-size: 40px;
+    text-decoration: underline 3px solid rgb(51, 109, 51);
+}
+.gap{
+    margin-top: 10%;
+}

@@ -1,0 +1,10 @@
+h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3rem;
+    font-weight: bolder;
+    text-decoration: underline 6px solid rgb(245, 130, 245);
+     
+}
+.background{
+  background-color: rgb(59, 59, 59);
+}
