@@ -28,22 +28,14 @@ const Catagories = () => {
   
   useEffect(()=>{
     setLoding(true);
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef`)
-    .then(res=>res.json())
-    .then(data=>
-      {
-        console.log(data);
-        setSearch(data.meals);
-        setLoding(false);
-      }).catch(()=>{
-        setError(true);
-        setLoding(false)
-    })
-  },[])
-
-  useEffect(()=>{
-    setLoding(true);
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`)
+    let url;
+    if(value===""){
+       url=`https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef`;
+    }
+    else{
+        url=`https://www.themealdb.com/api/json/v1/1/filter.php?c=${value}`;
+      }
+    fetch(url)
     .then(res=>res.json())
     .then(data=>
       {
