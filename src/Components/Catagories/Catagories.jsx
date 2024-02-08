@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './Catagories.css';
-import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { Button, Col, Container, Image, Offcanvas, Row, Spinner } from 'react-bootstrap';
 import Meal from '../Meal/Meal';
-
+import 'font-awesome/css/font-awesome.min.css';
+import menue from './../../img/menu.png'
 const Catagories = () => {
 
   
@@ -11,7 +12,7 @@ const Catagories = () => {
   const [value,setValue]=useState('');
   const [loding,setLoding]=useState(false);
   const [error,setError]=useState(false);
-  
+  const [show, setShow] = useState(false);
   useEffect(()=>{
     setLoding(true);
       fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
@@ -53,36 +54,56 @@ const Catagories = () => {
     setValue(e.target.value);
     console.log(e.target.value);
   } 
+  
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
     return (
       <>
-        <div className='background'>
-            <div>
-            <h3 className='pt-4 text-center text-white'>
-                Catagories
-            </h3>
-            </div>
-            <div>
-                <h1 className='text-danger text-center'>{error ? "data not found": ""}</h1>
-              </div>
-           <Container fluid>
+        <div className='pt-5 background'>
+           
+           <Container  fluid> 
            <Row>
 
             <Col xs={2} >
             
-            <div className='mt-5 text-center'>
-            {
+            <div className='mt-3'>
+            <Button variant="primary" className="d-lg-none mt-5" onClick={handleShow}>
+            <Image className='w-100' src={menue}/>
+            </Button>
+            <Offcanvas className='offcan' show={show} onHide={handleClose} responsive="lg">
+        <Offcanvas.Header className='' closeButton>
+          <Offcanvas.Title>Responsive offcanvas</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body className=''>
+         <div className='text-center mt-5'>
+           {
               
-              elements?.map(value=>( <Button className='m-2' as="input" type="" key={value.id} value={value.strCategory} defaultValue={''} onClick={handleOnClick}/>))
+              elements?.map(value=>( <Button className='btn mb-2' as="input" type="" key={value.id} value={value.strCategory} defaultValue={''} onClick={handleOnClick}/>))
             }
+         </div>
+        </Offcanvas.Body>
+      </Offcanvas>
            </div>
 
             </Col>
 
            <Col xs={10}> 
            <div>
+           <h3 className='text-center text-white'>
+                Catagories
+            </h3>
           <Row xs={1} md={3}  className="g-3 mt-3">
+          
             {
-              loding?(<Spinner animation="border" role="status" variant='danger'></Spinner>):
+              loding?(
+              <div className='d-flex m-auto justify-content-center'>
+                   <Spinner animation="border" role="status" variant='danger'></Spinner>
+              </div>
+             
+              
+              ):
                 search?.map(food=>(
                 <Meal key={food.idMeal} food={food}></Meal>
                ))

@@ -7,7 +7,7 @@ const Catagori = (props) => {
     return (
         <>
         <Container fluid>
-            
+      
         </Container>
        </>
     );
