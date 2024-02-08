@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Catagories.css';
-import { Button, Container, Row, Spinner } from 'react-bootstrap';
+import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
 import Meal from '../Meal/Meal';
 
 const Catagories = () => {
@@ -56,19 +56,31 @@ const Catagories = () => {
     return (
       <>
         <div className='background'>
-          <Container fluid>
-          <h3 className='pt-4 text-center text-white'>
+            <div>
+            <h3 className='pt-4 text-center text-white'>
                 Catagories
             </h3>
-           <div className='text-center'>
+            </div>
+            <div>
+                <h1 className='text-danger text-center'>{error ? "data not found": ""}</h1>
+              </div>
+           <Container fluid>
+           <Row>
+
+            <Col xs={2} >
+            
+            <div className='mt-5 text-center'>
             {
+              
               elements?.map(value=>( <Button className='m-2' as="input" type="" key={value.id} value={value.strCategory} defaultValue={''} onClick={handleOnClick}/>))
             }
            </div>
-           <h1 className='text-danger text-center'>{error ? "data not found": ""}</h1>
-          <div>
-          <Row xs={1} md={4}  className="g-3 mt-3">
-            
+
+            </Col>
+
+           <Col xs={10}> 
+           <div>
+          <Row xs={1} md={3}  className="g-3 mt-3">
             {
               loding?(<Spinner animation="border" role="status" variant='danger'></Spinner>):
                 search?.map(food=>(
@@ -78,7 +90,11 @@ const Catagories = () => {
             }
           </Row>
           </div>
-          </Container>
+           </Col>
+
+            </Row>
+           </Container>
+          
 
         </div>
       </>

@@ -5,6 +5,7 @@ import Canada from '../Canada/Canada';
 import Amirican from '../Amirican/Amirican';
 import Navigation from '../Share/Header/Navigation/Navigation';
 import Catagories from '../Catagories/Catagories'
+import Catagori from '../Catagori/Catagori';
 
 
 
@@ -19,6 +20,7 @@ const Home = () => {
             <Canada/>
             <Amirican/>
             <Catagories/>
+            <Catagori/>
             </>
     );
 };
