@@ -6,6 +6,7 @@ import Amirican from '../Amirican/Amirican';
 import Navigation from '../Share/Header/Navigation/Navigation';
 import Catagories from '../Catagories/Catagories'
 import Catagori from '../Catagori/Catagori';
+import ScrollToTop from 'react-scroll-to-top';
 
 
 
@@ -14,6 +15,7 @@ import Catagori from '../Catagori/Catagori';
 const Home = () => {
     return (
             <>
+            <ScrollToTop smooth color="#6f00ff" />
             <Navigation/>
             <Header/>
             <Newmeal/>

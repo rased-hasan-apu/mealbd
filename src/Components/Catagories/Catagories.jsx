@@ -4,6 +4,7 @@ import { Button, Col, Container, Image, Offcanvas, Row, Spinner } from 'react-bo
 import Meal from '../Meal/Meal';
 import 'font-awesome/css/font-awesome.min.css';
 import menue from './../../img/menu.png'
+import'./Catagories.css'
 const Catagories = () => {
 
   
@@ -62,38 +63,41 @@ const Catagories = () => {
     return (
       <>
         <div className='pt-5 background'>
-           
+        
            <Container  fluid> 
            <Row>
 
             <Col xs={2} >
             
             <div className='mt-3'>
-            <Button variant="primary" className="d-lg-none mt-5" onClick={handleShow}>
+            <Button variant="light" className="d-lg-none mt-5" onClick={handleShow}>
             <Image className='w-100' src={menue}/>
             </Button>
-            <Offcanvas className='offcan' show={show} onHide={handleClose} responsive="lg">
-        <Offcanvas.Header className='' closeButton>
+            <div className='style'>
+            <Offcanvas className='offcan w-50' show={show} onHide={handleClose} responsive="lg">
+        <Offcanvas.Header className='background' closeButton>
           <Offcanvas.Title>Responsive offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body className=''>
-         <div className='text-center mt-5'>
+        <Offcanvas.Body className='background'>
+         <div className='text-center'>
            {
               
-              elements?.map(value=>( <Button className='btn mb-2' as="input" type="" key={value.id} value={value.strCategory} defaultValue={''} onClick={handleOnClick}/>))
+              elements?.map(value=>( <Button id='button' variant="outline-secondary" className='btn rounded-pill' as="input" type="" key={value.id} value={value.strCategory} defaultValue={''} onClick={handleOnClick}/>))
             }
          </div>
         </Offcanvas.Body>
       </Offcanvas>
+            </div>
            </div>
 
-            </Col>
+            </Col> 
 
            <Col xs={10}> 
            <div>
            <h3 className='text-center text-white'>
                 Catagories
             </h3>
+            <h1 className='text-danger text-center'>{error ? "data not found": ""}</h1>
           <Row xs={1} md={3}  className="g-3 mt-3">
           
             {
@@ -101,8 +105,7 @@ const Catagories = () => {
               <div className='d-flex m-auto justify-content-center'>
                    <Spinner animation="border" role="status" variant='danger'></Spinner>
               </div>
-             
-              
+
               ):
                 search?.map(food=>(
                 <Meal key={food.idMeal} food={food}></Meal>
